@@ -5,7 +5,7 @@ let tieneMinuscula = /[a-z]/;
 let tieneNumeros = /[0-9]/;
 
 if (contraseña.length < longitudMinima) {
-    console.log ("La contraseña debe tener al menos"+ longitudMinima +"caracteres.")
+    console.log (`La contraseña debe tener al menos ${longitudMinima} caracteres.`)
     
 } else if (!tieneMayuscula.test(contraseña)) {
     console.log ("la contraseña debe contener al menos una letra en mayuscula.")
