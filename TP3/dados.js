@@ -5,7 +5,7 @@ function numeroRandom(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-for (let i = 0; i < 50; i++) {
+for (let i = 0; i <= 50; i++) {
     let dado1 = numeroRandom(1, 6);
     let dado2 = numeroRandom(1, 6);
     let suma = dado1 + dado2;
