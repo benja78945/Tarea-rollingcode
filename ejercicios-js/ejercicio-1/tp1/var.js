@@ -16,10 +16,15 @@
 //5.- Escribe un programa de tres líneas que pida un número, pida otro número y escriba el resultado de sumar estos dos números.
 //let numero1 = Number(prompt('Escriba un numero'))
 ///let numero2 = Number(prompt('Escriba el Segundo numero'))
+
 //let numero3 = Number(prompt('Escriba el tercer numero'))
 //let total = numero1 + numero2;
+//console.log (`la suma de numero1 y numero2 es: ${total}`)
+
 //6- Escribe un programa que pida dos números y escriba en la pantalla cual es el mayor.
+
 //7.- Escribe un programa que pida 3 números y escriba en la pantalla el mayor de los tres.
+
 //if (numero1 < numero2 && numero2 > numero3){
 //    console.log(`El numero mayor es segundo numero ${numero2}`)
 //}  else if(numero1 > numero3){
@@ -94,5 +99,4 @@ else if( numero % 7 == 0) {
 else {
     console.log (`El numero no es divisible por 2, 3, 5 o 7`)
 }
-//console.log (`la suma de numero1 y numero2 es: ${total}`)
 
