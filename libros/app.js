@@ -1,3 +1,10 @@
+let cuerpoTabla = document.querySelector("tbody");
+let inputNombre = document.querySelector("#name");
+let inputAutor = document.querySelector("#author");
+let inputAnio = document.querySelector("#year");
+let inputDescripcion = document.querySelector("#description");
+let formulario = document.getElementById("bookForm");
+
 //Array de objetos
 const listaLibros = [
   {
@@ -41,3 +48,76 @@ const listaLibros = [
       "Un cuento poético y filosófico que explora temas de soledad, amistad, amor y pérdida a través de la historia de un pequeño príncipe que viaja por el universo.",
   },
 ];
+
+getLibros();
+
+function getLibros(array = listaLibros) {
+  cuerpoTabla.innerHTML = "";
+
+  array.forEach((libro) => {
+    let fila = document.createElement("tr");
+    let celdas = `<td>${libro.nombre}</td>
+                <td>${libro.autor}</td>
+                <td>${libro.anio}</td>
+                <td><button class="btn btn-danger btn-sm" onclick="borrarLibro(${libro.id})"><i class="bi bi-x-lg"></i></button></td>`;
+    fila.innerHTML = celdas;
+
+    cuerpoTabla.append(fila);
+  });
+}
+
+const agregarLibro = () => {
+  let id = listaLibros.at(-1).id + 1;
+
+  const datos = {
+    id,
+    nombre: inputNombre.value,
+    autor: inputAutor.value,
+    anio: inputAnio.value,
+    descripcion: inputDescripcion.value,
+  };
+
+  listaLibros.push(datos);
+};
+
+function borrarLibro(id) {
+  // splice -> indice , 1
+  let index = listaLibros.findIndex((libro) => libro.id === id);
+
+  let validar = confirm(
+    `Está seguro que quiere eliminar el libro ${listaLibros[index].nombre}?`
+  );
+
+  if (validar) {
+    listaLibros.splice(index, 1);
+    getLibros();
+  }
+}
+
+//buscador  
+/*
+datos de entrada: título del libro | algunos caracteres (3 mínimo)
+proceso: Recorrer el array y comparar dato de entrada con el título de los libros (cualquier libro que incluya los caracteres)
+salida: lista de libros que coincidan con la búsqueda - array[]
+
+*/
+
+function buscarLibros(termino = document.querySelector("#input-search").value) {
+  if (termino) {
+    let librosFiltrados = listaLibros.filter((libro) =>
+      libro.nombre.toLowerCase().includes(termino.toLowerCase())
+    );
+
+    getLibros(librosFiltrados);
+  } else {
+    getLibros();
+  }
+}
+
+formulario.addEventListener("submit", (event) => {
+  event.preventDefault();
+  agregarLibro();
+  formulario.reset();
+  inputNombre.focus();
+  getLibros();
+});
